@@ -1,10 +1,17 @@
 import os
+import sys
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import sqlite3
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import time
 from sklearn.neighbors import KernelDensity
+
+# Ensure the DeepUnitMatch package root is on the path so `utils`/`testing` are
+# importable regardless of the caller's working directory.
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from testing.test import remove_conflicts, directional_filter
 from utils.helpers import (
     PROJECT_ROOT,
@@ -141,18 +148,7 @@ def get_matches_1model(mt, metric, fixed_n: int = None):
     ]
 
     if not fixed_n:
-        if metric == "MatchProb":
-            thresh = 0.5
-        else:
-            thresh = get_threshold_df(mt, metric=metric)
-
-            within = mt.loc[
-                (mt["RecSes1"] == mt["RecSes2"]),
-                [metric, "ID1", "ID2", "RecSes1", "RecSes2"],
-            ]
-            # Correct for different median similarities between within- and across-day sets.
-            diff = np.median(within[metric]) - np.median(across[metric])
-            thresh = thresh - diff
+        thresh = 0.5
 
         # Apply thresholds to generate matches
         matches = across.loc[
