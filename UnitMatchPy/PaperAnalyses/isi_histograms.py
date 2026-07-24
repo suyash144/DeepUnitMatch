@@ -46,8 +46,6 @@ ISIs_half2 = np.diff(half2)
 # use log bins for histogram
 # isi histograms for two halves of same neuron
 fig, ax = plt.subplots(figsize=(10, 6))
-# bins = np.linspace(0, 0.5, 51)
-# logbins = np.logspace(np.log10(bins[1]), np.log10(bins[-1]), len(bins))
 logbins = 5 * 10 ** np.arange(-4, 0.1, 0.1)
 ax.hist(np.diff(half1), bins=logbins, color="black", histtype="step", density=True)
 
@@ -57,7 +55,6 @@ ax.spines[["right", "top"]].set_visible(False)
 ax.spines["left"].set_position(("outward", 15))
 ax.spines["bottom"].set_position(("outward", 15))
 ax.set_xscale("log")
-# ax.set_xticks([bins[1], bins[10], bins[20], bins[30], bins[40]])
 ax.set_xlabel("Inter-Spike Interval (s)")
 # ax.set_yticks([])
 plt.rcParams["svg.fonttype"] = "none"
@@ -76,7 +73,6 @@ ax.spines[["right", "top"]].set_visible(False)
 ax.spines["left"].set_position(("outward", 15))
 ax.spines["bottom"].set_position(("outward", 15))
 ax.set_xscale("log")
-# ax.set_xticks([bins[1], bins[10], bins[20], bins[30], bins[40]])
 ax.set_xlabel("Inter-Spike Interval (s)")
 ax.set_xticklabels([])
 plt.rcParams["svg.fonttype"] = "none"
@@ -99,7 +95,6 @@ ax.spines[["right", "top"]].set_visible(False)
 ax.spines["left"].set_position(("outward", 15))
 ax.spines["bottom"].set_position(("outward", 15))
 ax.set_xscale("log")
-# ax.set_xticks([bins[1], bins[10], bins[20], bins[30], bins[40]])
 ax.set_xlabel("Inter-Spike Interval (s)")
 ax.set_xticklabels([])
 plt.rcParams["svg.fonttype"] = "none"
