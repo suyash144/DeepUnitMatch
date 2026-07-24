@@ -1,4 +1,3 @@
-import numpy as np
 import h5py
 import matplotlib.pyplot as plt
 import os
@@ -20,6 +19,7 @@ os.makedirs(fig_dir, exist_ok=True)
 neuron_path = os.path.join(ALL_DATA_DIR, "AL032", "19011111882", "2", "1", "processed_waveforms", "Unit247_RawSpikes.npy")
 match_path = os.path.join(ALL_DATA_DIR, "AL032", "19011111882", "2", "1_5", "processed_waveforms", "Unit270_RawSpikes.npy")
 nonmatch_path = os.path.join(ALL_DATA_DIR, "AL032", "19011111882", "2", "1_5", "processed_waveforms", "Unit2_RawSpikes.npy")
+match2_path = os.path.join(ALL_DATA_DIR, "AL032", "19011111882", "2", "1_6", "processed_waveforms", "Unit265_RawSpikes.npy")
 
 with h5py.File(neuron_path, "r") as f:
     neuron = f["waveform"][()]
@@ -33,11 +33,16 @@ with h5py.File(nonmatch_path, "r") as f:
     non_match = f["waveform"][()]
     non_match = non_match.mean(axis=-1)
     non_match = non_match[:, 15]
+with h5py.File(match2_path, "r") as f:
+    match2 = f["waveform"][()]
+    match2 = match2.mean(axis=-1)
+    match2 = match2[:, 15]
 
 # Plot waveforms of matched units across sessions
 plt.plot(neuron, label="Neuron 247 (session 1)")
-plt.plot(match, label="Match found by DeepUnitMatch")
-plt.plot(non_match, label="Non-matching unit")
+plt.plot(match, label="Match found by DeepUnitMatch (session 2)")
+plt.plot(non_match, label="Non-matching unit (session 2)")
+plt.plot(match2, label="Match found by DeepUnitMatch (session 3)")
 
 plt.xlabel("Time (ms)")
 plt.ylabel("Amplitude (a.u.)")

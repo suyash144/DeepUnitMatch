@@ -111,9 +111,9 @@ plt.show()
 # conn = sqlite3.connect('matchtables.db')
 # mt = pd.read_sql_query("SELECT ID1,ID2,RecSes1,RecSes2,NBProb18mice,newISI FROM AL032_19011111882_2", conn)
 # df = pick(mt, 4, 5)
-# matches = get_matches_1model(df, "NBProb18mice", r"C:\Users\suyash\UCL\DeepUnitMatch\ALL_DATA\AL032\19011111882\2\merged_mt.csv")
+# matches = get_matches_1model(df, "NBProb18mice")
 
-# match_isi = df.loc[matches, 'newISI'].values
+# match_isi = mt.loc[matches, 'newISI'].values
 # same_isi = df.loc[(df['RecSes1'] == df['RecSes2']) & (df['ID1']==df['ID2']), 'newISI'].values
 # diff_isi = df.loc[(df['RecSes1'] == df['RecSes2']) & (df['ID1']!=df['ID2']), 'newISI'].values
 
