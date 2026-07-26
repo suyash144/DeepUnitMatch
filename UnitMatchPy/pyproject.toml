@@ -38,6 +38,7 @@ dependencies = [
   "mtscomp",
   "torch>=2.1,<3.0",
   "tensorboard",
+  "umap-learn",
   "seaborn",
   "matplotlib_venn",
   "statsmodels",
