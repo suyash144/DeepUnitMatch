@@ -11,9 +11,7 @@ ALL_DATA_DIR = "/absolute/path/to/ALL_DATA"
 
 # Figures are written to a "figures" directory alongside this repo (a sibling
 # of the repo root). Derived automatically — no need to edit.
-REPO_ROOT = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-)
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 FIGURES_DIR = os.path.join(os.path.dirname(REPO_ROOT), "figures")
 fig_dir = os.path.join(FIGURES_DIR, "ISIhistograms")
 os.makedirs(fig_dir, exist_ok=True)

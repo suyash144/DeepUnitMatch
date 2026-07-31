@@ -9,7 +9,7 @@ from scipy import stats
 root = r"/path/to/results/N_set_by_UM"
 # root = r"/path/to/results"
 
-# Point these to whatever your results CSV files are named. 
+# Point these to whatever your results CSV files are named.
 dum = pd.read_csv(os.path.join(root, "NBProb18mice_results.csv")).drop_duplicates()
 um = pd.read_csv(os.path.join(root, "MatchProbNew_results.csv")).drop_duplicates()
 unt = pd.read_csv(os.path.join(root, "NBProbuntrained_results.csv")).drop_duplicates()
@@ -20,9 +20,7 @@ unf = pd.read_csv(os.path.join(root, "NBProbunfinetuned_results.csv")).drop_dupl
 
 models = ["_UM", "_DUM", "_UNTAE", "_UNF", "_UNT"]
 N_cols = []
-for df, name in zip(
-    [um, dum, untae, unf, unt], models
-):
+for df, name in zip([um, dum, untae, unf, unt], models):
     df.rename(columns={"AUCisi": f"AUCisi{name}"}, inplace=True)
     df.rename(columns={"N": f"N{name}"}, inplace=True)
     df.drop(columns=["AUCrpc"], inplace=True)

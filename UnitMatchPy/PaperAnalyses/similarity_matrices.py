@@ -199,11 +199,9 @@ def reorder_by_depth(matrix: np.ndarray, depths, recses1: int, recses2: int):
 
 
 if __name__ == "__main__":
-
     conn = sqlite3.connect(os.path.join(PROJECT_ROOT, "matchtables.db"))
     df = pd.read_sql_query("SELECT * FROM AL036_19011116882_3", conn)
 
     depths = read_depths("AL036", "19011116882", "3")
 
     sim_matrix, idx = compare_two_recordings(df, 19, 20, "depth", depths, vis=True)
-
